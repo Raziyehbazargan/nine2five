@@ -15,7 +15,7 @@ module.exports = function(req, res, next) {
     code: req.query.code,
     client_id: process.env.GOOGLE_CLIENT_ID,
     client_secret: process.env.GOOGLE_CLIENT_SECRET,
-    redirect_uri: `${process.env.API_URL}/api/auth/callback`, 
+    redirect_uri: `${process.env.API_URL}/api/oauth/callback`, 
     grant_type: 'authorization_code',
   };
 
