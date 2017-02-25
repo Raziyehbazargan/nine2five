@@ -42,7 +42,7 @@ module.exports = function(req, res, next) {
     next();
   })
   .catch((err) => {
-    req.googleError = err;
+    req.linkedinError = err;
     next();
   });
 };

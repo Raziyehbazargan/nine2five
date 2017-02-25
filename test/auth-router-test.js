@@ -25,11 +25,9 @@ describe('Testing Auth-Router', function() {
     .then(() => sequelize.drop({cascade: true}));
   });
 
-
   describe('testing user signup', function() {
 
     describe('testing successful user signup with valid body', () => {
-
       it('should successfully sign up a user and send back a token', done => {
         request.post(`${url}/api/signup`)
         .send(exampleUser)
@@ -45,7 +43,6 @@ describe('Testing Auth-Router', function() {
     describe('testing error cases', () => {
 
       describe('with no password included', () => {
-
         it('it should respond with 400', done => {
           request.post(`${url}/api/signup`)
           .send({ email: 'sup@sup.com' })
