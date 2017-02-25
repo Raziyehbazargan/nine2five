@@ -10,12 +10,10 @@
     "lint": "./node_modules/eslint/bin/eslint.js .",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "babel": "babel -w src/ -d build/",
-    "heroku-postbuild": "babel app/ -d build/"
+    "heroku-postbuild": "babel src/ -d build/",
+    "test-debug": "DEBUG='nine2five*' istanbul cover --dir ./coverage _mocha --bail --recursive './test/**/*-test.js' --opts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nine2five/nine2five"
-  },
+  "repository": "git+https://github.com/nine2five/nine2five",
   "author": "broxsonl@gmail.com, stefuhnee@gmail.com, maxfred0025@gmail.com, Raziyeh.bazargan@gmail.com",
   "license": "ISC",
   "bugs": {
@@ -25,13 +23,14 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "coveralls": "^2.11.15",
-    "debug": "^2.6.0",
     "eslint": "^3.13.1",
     "istanbul": "^0.4.5",
+    "lorem-ipsum": "^1.0.3",
     "mocha": "^3.2.0"
   },
   "dependencies": {
     "babel-cli": "^6.18.0",
+    "debug": "^2.6.0",
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
