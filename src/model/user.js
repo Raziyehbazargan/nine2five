@@ -16,6 +16,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       unique: true,
     },
+    linkedinID: {  // linkedinOAUTH doesnt't return email, we can check if user exist in our db base on id
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+    },
     isVerified: {
       type: DataTypes.BOOLEAN,
       defaultValue : false,
