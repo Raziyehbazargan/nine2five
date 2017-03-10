@@ -13,11 +13,12 @@ module.exports = function(req, res, next) {
   }
 
   let data = {
-    client_id: process.env.GOOGLE_CLIENT_ID,
-    client_secret: process.env.GOOGLE_CLIENT_SECRET,
+    client_id: process.env.GITHUB_CLIENT_ID,
+    client_secret: process.env.GITHUB_CLIENT_SECRET,
+    state: process.env.GITHUB_CLIENT_SECRET, // randon string
     code: req.query.code,
-    redirect_uri: `${process.env.API_URL}/api/oauth/callback`,
-    grant_type: 'authorization_code',
+    redirect_uri: `${process.env.API_URL}/api/oauth/github`,
+  //  grant_type: 'authorization_code',
   };
 
   let accessToken, scope, token_type;
@@ -29,7 +30,7 @@ module.exports = function(req, res, next) {
     scope = response.body.scope;
     token_type = response.body.token_type;
     return request.get('https://api.github.com/user')
-    .set('Authorization', `Bearer ${response.body.access_token}`);
+    .set('Authorization', `token ${response.body.access_token}`);
   })
   .then(response => {
     debug('github-oauth-middleware response after request', response.body);
@@ -43,6 +44,4 @@ module.exports = function(req, res, next) {
     req.googleError = err;
     next();
   });
-
-
 };
