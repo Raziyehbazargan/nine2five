@@ -1,8 +1,10 @@
 'use strict';
 
-import request from 'superagent';
-import Debug from 'debug';
-const debug = Debug('nine2five:google-oauth-middleware');
+// import request from 'superagent';
+// import Debug from 'debug';
+const request = require('superagent');
+const debug = require('debug');
+// const debug = Debug('nine2five:google-oauth-middleware');
 
 module.exports = function(req, res, next) {
   debug('getting Google user info');
@@ -15,7 +17,7 @@ module.exports = function(req, res, next) {
     code: req.query.code,
     client_id: process.env.GOOGLE_CLIENT_ID,
     client_secret: process.env.GOOGLE_CLIENT_SECRET,
-    redirect_uri: `${process.env.API_URL}/api/oauth/callback`, 
+    redirect_uri: `${process.env.API_URL}/api/oauth/callback`,
     grant_type: 'authorization_code',
   };
 

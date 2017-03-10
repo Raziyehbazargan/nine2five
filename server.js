@@ -7,6 +7,7 @@ const express = require('express');
 const sequelize = require('./src/lib/db-connection').sequelize;
 const errorMiddleware = require('./src/lib/error-middleware');
 const authRouter = require('./src/route/auth-router');
+const profileRouter = require('./src/route/profile-router');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 app.use(authRouter);
+app.use(profileRouter);
 app.use(errorMiddleware);
 
 const server = module.exports = app.listen(PORT, function() {
