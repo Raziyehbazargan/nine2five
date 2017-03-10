@@ -1,9 +1,9 @@
 'use strict';
 
 const Router = require('express').Router;
-const debug = require('debug')('nine2five:auth-router');
 const jsonParser = require('body-parser').json();
 const createError = require('http-errors');
+const debug = require('debug')('nine2five:auth-router');
 
 const User = require('../lib/db-connection').user;
 const basicAuth = require('../lib/basic-auth-middleware');
